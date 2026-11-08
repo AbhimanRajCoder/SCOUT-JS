@@ -18,6 +18,7 @@ const jsContent = fs.readFileSync(path.join(rootDir, 'lib/ui/assets/playground.j
 const modules = [
   'lib/discovery/params.js',
   'lib/discovery/router-tree.js',
+  'lib/discovery/jsdoc-parser.js',
   'lib/discovery/express4-adapter.js',
   'lib/discovery/express5-adapter.js',
   'lib/discovery/interceptor.js',

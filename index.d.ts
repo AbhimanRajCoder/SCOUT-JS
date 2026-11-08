@@ -72,6 +72,7 @@ export interface AutoDocsOptions {
     enabled?: boolean;
     include?: (string | RegExp)[];
     exclude?: (string | RegExp)[];
+    extractJSDoc?: boolean;
   };
   security?: {
     protectDocs?: boolean;

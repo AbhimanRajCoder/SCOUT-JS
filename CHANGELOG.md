@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Developer Ergonomics & Typing:**
   - `describeRoute()` middleware helper for summary, description, tags, query, headers, body, and responses.
+  - Inline handler JSDoc and docstring extraction (`extractJSDoc: true`) parsing `@summary`, `@description`, `@tags`, `@param`, and `@deprecated` directly from function source code.
   - Runtime request validation (`validate: true` or `{ body, query, params, headers }`) supporting Zod and standard JSON Schema.
   - Automatic coercion for query and path parameters (e.g. string numbers and booleans).
   - FastAPI-style response serialization and sensitive field filtering (`responseModel` / `serialize: true`) with automatic stripping of unlisted database fields.
