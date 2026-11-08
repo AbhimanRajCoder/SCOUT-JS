@@ -5,6 +5,11 @@
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "lib"
+  ],
   "exports": {
     ".": {
       "types": "./index.d.ts",
