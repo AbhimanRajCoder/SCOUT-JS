@@ -446,7 +446,7 @@ app.all('/api/v1/webhooks/listener', describeRoute({
 // 6. Initialize SCOUT-JS AutoDocs
 autoDocs(app, {
   info: {
-    title: 'Enterprise Task & Project Management API',
+    title: 'SCOUT JS',
     version: '1.4.0',
     description: 'High-throughput project management service with real-time route discovery, parameter validation, and OpenAPI 3.1 generation.'
   },

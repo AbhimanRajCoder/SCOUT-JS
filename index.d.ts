@@ -27,6 +27,13 @@ export interface RouteDefinition {
     schema: Record<string, unknown>;
     description?: string;
   }>;
+  headerParams?: Array<{
+    name: string;
+    in: 'header';
+    required: boolean;
+    schema: Record<string, unknown>;
+    description?: string;
+  }>;
   status: RouteStatus;
   handlerName?: string;
   tags?: string[];
@@ -97,10 +104,11 @@ export interface RouteMetadata {
   description?: string;
   tags?: string[];
   body?: unknown;
+  example?: unknown;
   query?: unknown;
   headers?: unknown;
   params?: unknown;
-  responses?: Record<string | number, string | { description: string; body?: unknown; schema?: unknown }>;
+  responses?: Record<string | number, string | { description: string; body?: unknown; schema?: unknown; example?: unknown }>;
   security?: Record<string, string[]>[];
 }
 
