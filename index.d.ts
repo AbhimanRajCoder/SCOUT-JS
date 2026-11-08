@@ -99,6 +99,13 @@ export interface AutoDocsInstance {
   close(): void;
 }
 
+export interface RouteValidationIssue {
+  field: string;
+  message: string;
+  location?: 'body' | 'query' | 'params' | 'headers';
+  code?: string;
+}
+
 export interface RouteMetadata {
   summary?: string;
   description?: string;
@@ -110,6 +117,18 @@ export interface RouteMetadata {
   params?: unknown;
   responses?: Record<string | number, string | { description: string; body?: unknown; schema?: unknown; example?: unknown }>;
   security?: Record<string, string[]>[];
+  validate?: boolean | {
+    body?: boolean;
+    query?: boolean;
+    params?: boolean;
+    headers?: boolean;
+  };
+  onValidationError?: (
+    issues: RouteValidationIssue[],
+    req: any,
+    res: any,
+    next: any
+  ) => void;
 }
 
 /**

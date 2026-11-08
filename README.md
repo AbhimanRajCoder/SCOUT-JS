@@ -52,6 +52,7 @@ Navigate to:
 
 - **100% Pure JavaScript:** Runs natively in Node.js ES Modules. Zero TypeScript build tools, zero bundlers, instant execution.
 - **Bi-directional Discovery:** Automatically discovers routes defined **before** and **after** `autoDocs()` is called.
+- **Runtime Request Validation (`validate: true`):** Optionally turns your route schemas into active Express middleware with zero overhead. Validates request body, query parameters, path parameters, and headers with auto-coercion and standard 400 Bad Request responses.
 - **Deep Router Introspection:** Seamlessly handles nested `express.Router()` mounts (`/api/v1` + `/users` -> `/api/v1/users`).
 - **Route Chaining:** Fully supports `app.route('/items').get(...).post(...)`.
 - **Accurate OpenAPI 3.1:** Automatically converts `:id` -> `{id}`, tags routes by path prefixes, and validates specs.
@@ -109,28 +110,49 @@ const instance = autoDocs(app, {
 
 ### `describeRoute(metadata)`
 
-Attach optional metadata and schemas directly to your route:
+Attach optional metadata, schemas, and runtime request validation directly to your route:
 
 ```javascript
+import { describeRoute } from 'scout-js';
+import { z } from 'zod'; // Optional: Supports Zod or standard JSON Schema
+
 app.post('/items', describeRoute({
   summary: 'Create item',
   description: 'Adds an item to the catalog',
   tags: ['Items'],
-  body: {
-    type: 'object',
-    required: ['name'],
-    properties: {
-      name: { type: 'string' },
-      price: { type: 'number' }
-    }
-  },
+  validate: true, // Activates runtime validation for body, query, params & headers
+  body: z.object({
+    name: z.string().min(2),
+    price: z.number().positive(),
+    category: z.enum(['electronics', 'books', 'apparel'])
+  }),
+  query: z.object({
+    dryRun: z.boolean().optional()
+  }),
   responses: {
-    201: { description: 'Item created successfully' },
-    400: { description: 'Invalid request payload' }
+    201: { description: 'Item created successfully' }
+    // 400 Bad Request is automatically documented when validate: true
   }
 }), (req, res) => {
+  // req.body and req.query are guaranteed valid and type-coerced here
   res.status(201).json(req.body);
 });
+```
+
+#### Validation Options & Granular Control:
+
+```javascript
+// Validate only specific parts
+describeRoute({
+  validate: { body: true, query: true, params: false },
+  // Custom validation error response handler
+  onValidationError: (err, req, res, next) => {
+    res.status(422).json({
+      error: 'Unprocessable Entity',
+      details: err.issues
+    });
+  }
+})
 ```
 
 ---
