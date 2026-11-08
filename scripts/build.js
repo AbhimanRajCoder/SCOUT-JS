@@ -29,6 +29,7 @@ const modules = [
   'lib/schema/json-schema.js',
   'lib/schema/runtime-validator.js',
   'lib/schema/response-serializer.js',
+  'lib/server/mock-engine.js',
   'lib/schema/describe-route.js',
   'lib/server/security.js',
   'lib/ui/render.js',

@@ -54,6 +54,7 @@ Navigate to:
 - **Bi-directional Discovery:** Automatically discovers routes defined **before** and **after** `autoDocs()` is called.
 - **Runtime Request Validation (`validate: true`):** Optionally turns your route schemas into active Express middleware with zero overhead. Validates request body, query parameters, path parameters, and headers with auto-coercion and standard 400 Bad Request responses.
 - **FastAPI-Style Response Model Filtering (`responseModel`):** Automatically strips unlisted/sensitive fields (e.g. `password_hash`, internal columns) before sending `res.json()`, and validates outgoing schemas in development.
+- **Built-in Mock Server Engine:** Instantly simulate any endpoint via `/docs/mock/*` or `X-Scout-Mock: true` header. Generates deterministic mock data directly from route schemas and examples for frontend and QA teams.
 - **Deep Router Introspection:** Seamlessly handles nested `express.Router()` mounts (`/api/v1` + `/users` -> `/api/v1/users`).
 - **Route Chaining:** Fully supports `app.route('/items').get(...).post(...)`.
 - **Accurate OpenAPI 3.1:** Automatically converts `:id` -> `{id}`, tags routes by path prefixes, and validates specs.
@@ -97,6 +98,10 @@ const instance = autoDocs(app, {
   },
   server: {
     url: 'http://localhost:3000'
+  },
+  mock: {
+    enabled: true,           // Default: true in dev, false in prod
+    prefix: '/docs/mock'     // Default: '/docs/mock'
   }
 });
 ```

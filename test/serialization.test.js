@@ -197,3 +197,4 @@ describe('Response Serialization & Output Filtering (Phase 3)', () => {
     assert.ok(schema.properties.fullName);
   });
 });
+

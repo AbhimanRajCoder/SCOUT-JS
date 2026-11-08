@@ -85,6 +85,10 @@ export interface AutoDocsOptions {
     url?: string;
     description?: string;
   };
+  mock?: {
+    enabled?: boolean;
+    prefix?: string;
+  };
   components?: {
     schemas?: Record<string, unknown>;
     securitySchemes?: Record<string, unknown>;
