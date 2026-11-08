@@ -90,3 +90,4 @@ module.exports.validateOpenApiDocument = validateOpenApiDocument;
 
 fs.writeFileSync(path.join(rootDir, 'index.cjs'), bundle, 'utf-8');
 console.log('Successfully built index.cjs for CommonJS support.');
+

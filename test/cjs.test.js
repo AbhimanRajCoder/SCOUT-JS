@@ -34,3 +34,4 @@ describe('CommonJS Module Compatibility', () => {
     instance.close();
   });
 });
+

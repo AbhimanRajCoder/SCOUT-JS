@@ -85,3 +85,4 @@ describe('Header Parameters and Example Payloads', () => {
     assert.deepEqual(meta.responses['201'].content['application/json'].example, { id: 'corp-123', name: 'Acme Corp' });
   });
 });
+

@@ -44,3 +44,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dual Distribution & Packaging:**
   - Dual ESM (`import`) and CommonJS (`require`) export support.
   - Clean npm package bundle (< 30 kB unpacked).
+
