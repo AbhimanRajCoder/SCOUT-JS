@@ -443,7 +443,72 @@ app.all('/api/v1/webhooks/listener', describeRoute({
   });
 });
 
-// 6. Initialize SCOUT-JS AutoDocs
+// 6. Demonstrating Phase 1 (Runtime Validation), Phase 3 (Response Model Filtering), & Phase 5 (JSDoc)
+app.post('/api/v1/projects/validated', describeRoute({
+  summary: 'Create project with runtime validation',
+  description: 'Validates request body and query params at runtime using validate: true',
+  tags: ['Validation'],
+  validate: true,
+  query: {
+    type: 'object',
+    properties: {
+      strict: { type: 'boolean', description: 'Enable strict auditing' }
+    }
+  },
+  body: {
+    type: 'object',
+    required: ['title', 'budget'],
+    properties: {
+      title: { type: 'string', minLength: 3 },
+      budget: { type: 'number', minimum: 1000 },
+      priority: { type: 'string', enum: ['low', 'medium', 'high', 'critical'] }
+    }
+  },
+  responses: {
+    201: { description: 'Project created with valid schema' }
+  }
+}), (req, res) => {
+  res.status(201).json({ success: true, project: req.body });
+});
+
+app.get('/api/v1/users/profile', describeRoute({
+  summary: 'Get public user profile with responseModel filtering',
+  description: 'Automatically strips private database columns (password_hash, ssn) before sending',
+  tags: ['Users'],
+  responseModel: {
+    type: 'object',
+    required: ['id', 'username', 'displayName'],
+    properties: {
+      id: { type: 'string' },
+      username: { type: 'string' },
+      displayName: { type: 'string' },
+      role: { type: 'string', enum: ['lead', 'developer', 'designer'] }
+    }
+  }
+}), (req, res) => {
+  // Database record containing sensitive fields that will be stripped
+  res.json({
+    id: 'user-007',
+    username: 'alex',
+    displayName: 'Alex Morgan',
+    role: 'lead',
+    password_hash: '$2b$12$e8Yk2u...',
+    ssn: '000-12-3456',
+    salary: 145000
+  });
+});
+
+app.get('/api/v1/system/version', function getVersion(req, res) {
+  /**
+   * @summary Service version and runtime metadata
+   * @description Documented automatically via inline handler JSDoc docstrings
+   * @tags System
+   * @param {string} [format=json] - Response format
+   */
+  res.json({ version: '1.4.0', node: process.version });
+});
+
+// 7. Initialize SCOUT-JS AutoDocs
 autoDocs(app, {
   info: {
     title: 'SCOUT JS',
@@ -484,6 +549,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`Interactive Docs: http://localhost:${PORT}/docs`);
+  console.log(`Mock Server:      http://localhost:${PORT}/docs/mock/api/v1/projects`);
   console.log(`OpenAPI JSON:     http://localhost:${PORT}/openapi.json`);
   console.log(`OpenAPI YAML:     http://localhost:${PORT}/openapi.yaml`);
   console.log(`Engine Health:    http://localhost:${PORT}/docs/health`);
