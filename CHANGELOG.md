@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **FastAPI / Swagger-Level Interactive UI:**
   - Perk-themed design layout: electric lime on warm parchment paper.
+  - Multi-language live code snippets (cURL, JavaScript Fetch, Axios, Python Requests, Go `net/http`) with live parameter synchronization and preferred language persistence.
   - Tag grouping with collapsible accordions.
   - Parameter tables with type indicators, locations (path, query, header), and required markers.
   - Example Value vs. Schema tab toggling for request body and responses.

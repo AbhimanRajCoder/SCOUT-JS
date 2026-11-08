@@ -58,6 +58,7 @@ Navigate to:
 - **Accurate OpenAPI 3.1:** Automatically converts `:id` -> `{id}`, tags routes by path prefixes, and validates specs.
 - **Never Fabricates Schemas:** Unknown bodies and responses are left unspecified—no hallucinated or fake mock data.
 - **Self-Contained UI:** Embedded responsive dark/light documentation UI with instant client-side search. Zero external CDN dependencies (works completely offline).
+- **Multi-Language Code Snippets:** Instant live client SDK code generator in each operation card supporting **cURL**, **JavaScript (Fetch)**, **Axios**, **Python (Requests)**, and **Go (`net/http`)**, updating dynamically as you test parameters.
 - **Try-It API Playground:** Execute requests directly from your browser with query/path parameter builders, custom headers, duration timings (ms), and JSON inspector.
 - **Production Guardrails:** Automatically disabled in `NODE_ENV=production` unless explicitly opted-in; supports Basic Auth credentials and origin protection.
 
