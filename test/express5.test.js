@@ -78,3 +78,4 @@ describe('Express 5 Compatibility Adapter', () => {
     assert.deepEqual(introspectExpress5({ router: {} }), []);
   });
 });
+

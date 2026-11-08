@@ -8,7 +8,7 @@
 
 ---
 
-## ⚡ 30-Second Quickstart
+## 30-Second Quickstart
 
 ```bash
 npm install scout-js
@@ -41,20 +41,20 @@ app.listen(3000, () => {
 ```
 
 Navigate to:
-- 📖 **`/docs`** — Custom interactive docs UI + live try-it playground.
-- 📄 **`/openapi.json`** — Auto-generated OpenAPI 3.1 specification.
-- 📝 **`/openapi.yaml`** — Exportable YAML specification.
-- 🩺 **`/docs/health`** — Discovery stats, validation status, and engine health.
+- **`/docs`** — Custom interactive docs UI + live try-it playground.
+- **`/openapi.json`** — Auto-generated OpenAPI 3.1 specification.
+- **`/openapi.yaml`** — Exportable YAML specification.
+- **`/docs/health`** — Discovery stats, validation status, and engine health.
 
 ---
 
-## ✨ Features
+## Features
 
 - **100% Pure JavaScript:** Runs natively in Node.js ES Modules. Zero TypeScript build tools, zero bundlers, instant execution.
 - **Bi-directional Discovery:** Automatically discovers routes defined **before** and **after** `autoDocs()` is called.
-- **Deep Router Introspection:** Seamlessly handles nested `express.Router()` mounts (`/api/v1` + `/users` $\rightarrow$ `/api/v1/users`).
+- **Deep Router Introspection:** Seamlessly handles nested `express.Router()` mounts (`/api/v1` + `/users` -> `/api/v1/users`).
 - **Route Chaining:** Fully supports `app.route('/items').get(...).post(...)`.
-- **Accurate OpenAPI 3.1:** Automatically converts `:id` $\rightarrow$ `{id}`, tags routes by path prefixes, and validates specs.
+- **Accurate OpenAPI 3.1:** Automatically converts `:id` -> `{id}`, tags routes by path prefixes, and validates specs.
 - **Never Fabricates Schemas:** Unknown bodies and responses are left unspecified—no hallucinated or fake mock data.
 - **Self-Contained UI:** Embedded responsive dark/light documentation UI with instant client-side search. Zero external CDN dependencies (works completely offline).
 - **Try-It API Playground:** Execute requests directly from your browser with query/path parameter builders, custom headers, duration timings (ms), and JSON inspector.
@@ -62,7 +62,7 @@ Navigate to:
 
 ---
 
-## 🛠️ API Reference
+## API Reference
 
 ### `autoDocs(app, options)`
 
@@ -135,7 +135,7 @@ app.post('/items', describeRoute({
 
 ---
 
-## 🧪 Testing
+## Testing
 
 SCOUT-JS uses Node's native test runner (`node:test`):
 
@@ -151,7 +151,7 @@ npm run example:nested
 
 ---
 
-## 📄 License
+## License
 
 MIT
 

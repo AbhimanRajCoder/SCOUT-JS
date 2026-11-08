@@ -45,7 +45,7 @@ autoDocs(app, {
 
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`🚀 Nested API running on http://localhost:${PORT}`);
-  console.log(`📖 Interactive Docs: http://localhost:${PORT}/docs`);
+  console.log(`Nested API running on http://localhost:${PORT}`);
+  console.log(`Interactive Docs: http://localhost:${PORT}/docs`);
 });
 

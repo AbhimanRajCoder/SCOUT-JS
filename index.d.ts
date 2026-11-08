@@ -125,3 +125,4 @@ export class RouteRegistry {
 
 export function buildOpenApiDocument(registry: RouteRegistry, options?: AutoDocsOptions): Record<string, unknown>;
 export function validateOpenApiDocument(doc: Record<string, unknown>): { valid: boolean; errors: string[] };
+

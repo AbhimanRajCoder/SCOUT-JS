@@ -62,10 +62,10 @@ app.post('/users', describeRoute({
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📖 Interactive Docs: http://localhost:${PORT}/docs`);
-  console.log(`📄 OpenAPI JSON:     http://localhost:${PORT}/openapi.json`);
-  console.log(`📝 OpenAPI YAML:     http://localhost:${PORT}/openapi.yaml`);
-  console.log(`🩺 Engine Health:    http://localhost:${PORT}/docs/health`);
+  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Interactive Docs: http://localhost:${PORT}/docs`);
+  console.log(`OpenAPI JSON:     http://localhost:${PORT}/openapi.json`);
+  console.log(`OpenAPI YAML:     http://localhost:${PORT}/openapi.yaml`);
+  console.log(`Engine Health:    http://localhost:${PORT}/docs/health`);
 });
 
