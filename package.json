@@ -1,0 +1,32 @@
+{
+  "name": "scout-js",
+  "version": "1.0.0",
+  "description": "Zero-config runtime API documentation engine for Express.js",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test test/**/*.test.js",
+    "example": "node examples/basic.js",
+    "example:nested": "node examples/nested-routers.js"
+  },
+  "keywords": [
+    "express",
+    "openapi",
+    "swagger",
+    "documentation",
+    "api-docs",
+    "auto-docs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "express": "^4.18.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "express": "^4.21.1",
+    "zod": "^4.6.7"
+  }
+}
