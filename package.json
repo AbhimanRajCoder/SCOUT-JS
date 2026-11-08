@@ -4,8 +4,12 @@
   "description": "Zero-config runtime API documentation engine for Express.js",
   "type": "module",
   "main": "./index.js",
+  "types": "./index.d.ts",
   "exports": {
-    ".": "./index.js"
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
   },
   "scripts": {
     "test": "node --test test/**/*.test.js",
