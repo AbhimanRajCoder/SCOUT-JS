@@ -41,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `describeRoute()` middleware helper for summary, description, tags, query, headers, body, and responses.
   - Runtime request validation (`validate: true` or `{ body, query, params, headers }`) supporting Zod and standard JSON Schema.
   - Automatic coercion for query and path parameters (e.g. string numbers and booleans).
+  - FastAPI-style response serialization and sensitive field filtering (`responseModel` / `serialize: true`) with automatic stripping of unlisted database fields.
   - Standardized 400 Bad Request error payload with issue details (`field`, `message`, `code`) and customizable `onValidationError` handler.
   - Auto-documentation of 400 Bad Request responses in OpenAPI paths when validation is active.
   - Full TypeScript definitions in `index.d.ts` for IDE autocomplete and type safety.

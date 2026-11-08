@@ -116,6 +116,8 @@ export interface RouteMetadata {
   headers?: unknown;
   params?: unknown;
   responses?: Record<string | number, string | { description: string; body?: unknown; schema?: unknown; example?: unknown }>;
+  responseModel?: unknown;
+  serialize?: boolean;
   security?: Record<string, string[]>[];
   validate?: boolean | {
     body?: boolean;
@@ -128,6 +130,11 @@ export interface RouteMetadata {
     req: any,
     res: any,
     next: any
+  ) => void;
+  onResponseValidationError?: (
+    issues: Array<{ field?: string; message: string; code?: string }>,
+    data: any,
+    options: any
   ) => void;
 }
 

@@ -28,6 +28,7 @@ const modules = [
   'lib/openapi/builder.js',
   'lib/schema/json-schema.js',
   'lib/schema/runtime-validator.js',
+  'lib/schema/response-serializer.js',
   'lib/schema/describe-route.js',
   'lib/server/security.js',
   'lib/ui/render.js',

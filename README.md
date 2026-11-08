@@ -53,6 +53,7 @@ Navigate to:
 - **100% Pure JavaScript:** Runs natively in Node.js ES Modules. Zero TypeScript build tools, zero bundlers, instant execution.
 - **Bi-directional Discovery:** Automatically discovers routes defined **before** and **after** `autoDocs()` is called.
 - **Runtime Request Validation (`validate: true`):** Optionally turns your route schemas into active Express middleware with zero overhead. Validates request body, query parameters, path parameters, and headers with auto-coercion and standard 400 Bad Request responses.
+- **FastAPI-Style Response Model Filtering (`responseModel`):** Automatically strips unlisted/sensitive fields (e.g. `password_hash`, internal columns) before sending `res.json()`, and validates outgoing schemas in development.
 - **Deep Router Introspection:** Seamlessly handles nested `express.Router()` mounts (`/api/v1` + `/users` -> `/api/v1/users`).
 - **Route Chaining:** Fully supports `app.route('/items').get(...).post(...)`.
 - **Accurate OpenAPI 3.1:** Automatically converts `:id` -> `{id}`, tags routes by path prefixes, and validates specs.
@@ -153,7 +154,28 @@ describeRoute({
       details: err.issues
     });
   }
-})
+});
+```
+
+#### Response Serialization & Sensitive Field Filtering (`responseModel`):
+
+```javascript
+// Automatically filter database responses to only expose declared fields
+const UserOut = z.object({
+  id: z.string(),
+  username: z.string(),
+  email: z.string().email()
+});
+
+app.get('/users/:id', describeRoute({
+  summary: 'Get public user profile',
+  responseModel: UserOut // Auto-strips password_hash, tokens, internal fields
+}), async (req, res) => {
+  const dbUser = await db.findUser(req.params.id);
+  // Contains { id, username, email, password_hash, ssn, stripe_id }
+  res.json(dbUser);
+  // Client receives ONLY { id, username, email }!
+});
 ```
 
 ---

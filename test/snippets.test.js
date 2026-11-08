@@ -83,3 +83,4 @@ describe('Multi-Language Code Snippets (Phase 2)', () => {
     assert.ok(html.includes('scout_snippet_lang'), 'HTML bundle must support language persistence');
   });
 });
+
