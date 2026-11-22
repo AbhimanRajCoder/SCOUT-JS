@@ -68,14 +68,14 @@ In frameworks like FastAPI, route definitions, input validation, and interactive
 Install via npm:
 
 ```bash
-npm install scout-js
+npm install @abhimanrajcoder/scout-js
 ```
 
 Or using yarn or pnpm:
 
 ```bash
-yarn add scout-js
-pnpm add scout-js
+yarn add @abhimanrajcoder/scout-js
+pnpm add @abhimanrajcoder/scout-js
 ```
 
 ### Optional Peer Dependencies:
@@ -91,7 +91,7 @@ npm install zod
 
 ```javascript
 import express from 'express';
-import { autoDocs, describeRoute } from 'scout-js';
+import { autoDocs, describeRoute } from '@abhimanrajcoder/scout-js';
 
 const app = express();
 app.use(express.json());
@@ -590,12 +590,12 @@ SCOUT-JS natively supports both ES Modules (`import`) and CommonJS (`require`):
 
 ### ES Modules (ESM):
 ```javascript
-import { autoDocs, describeRoute } from 'scout-js';
+import { autoDocs, describeRoute } from '@abhimanrajcoder/scout-js';
 ```
 
 ### CommonJS (CJS):
 ```javascript
-const { autoDocs, describeRoute } = require('scout-js');
+const { autoDocs, describeRoute } = require('@abhimanrajcoder/scout-js');
 ```
 
 The package contains an automated pre-pack build script that compiles `index.cjs` with pre-inlined CSS and client scripts, allowing dual distribution in older and newer Node.js versions alike.

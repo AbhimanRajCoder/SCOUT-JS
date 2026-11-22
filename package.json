@@ -1,7 +1,10 @@
 {
-  "name": "scout-js",
+  "name": "@abhimanrajcoder/scout-js",
   "version": "1.0.0",
   "description": "Zero-config runtime API documentation engine for Express.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./index.cjs",
   "module": "./index.js",
